@@ -27,12 +27,12 @@ mongoose
 const app = express()
 
 // middlewares
-app.use(morgan('dev'))
 app.use(json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 if (process.env.NODE_ENV === 'development') {
   app.use(cors({ origin: `${process.env.CLIENT_URL}` }))
+  app.use(morgan('dev'))
 }
 
 app.use('/api', blogRoutes)
